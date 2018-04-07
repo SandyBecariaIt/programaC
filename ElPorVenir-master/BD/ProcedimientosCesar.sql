@@ -62,6 +62,22 @@ AS
 	select @idCompania=Compania.idCompania from Compania where descripcion=@compania
 	update Proveedor set telefono=@telefono,idCompania=@idCompania where descripcion=@marca
 
+CREATE PROCEDURE Loguea
+	@usuario VARCHAR(100),
+	@contrasena VARCHAR(100),
+	@res INT OUTPUT
+AS
+	DECLARE @user VARCHAR(100);
+	SELECT @user = tipoUser FROM Usuarios WHERE @usuario = telefono OR @usuario = correo
+	AND actividad = 1;
+	IF(@user > 0)
+		BEGIN
+			SET @res = @user;
+		END
+	ELSE 
+		BEGIN
+			SET @res = 0;
+		END
 
-exec AgregarUsuario 'CESAR','MUÑOZ','ocampo','1994/09/27'
+exec AgregarUsuario 'CESAR',	'MUÑOZ','ocampo','1994/09/27'
 ,'M',1,'0445533','cesar_dantexD','dantexD123',''

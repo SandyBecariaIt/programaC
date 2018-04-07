@@ -1,14 +1,16 @@
 
 package elporvenir;
 
+import Funciones.Procedures;
 import elporvenir.Principal;
 import elporvenir.dise.Logo;
 import java.awt.Point;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
 public class Login extends javax.swing.JFrame {
-    
+    private int tipo;
     public Login() {
         initComponents();
         //IntroducirPanle(new Logo(), pnLogo,new Point(0,0));
@@ -154,7 +156,8 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-            new Principal().setVisible(true);
+           tipo = Procedures.Loguea(txtUsuario.getText(), txtContraseña.getText().toString());
+           JOptionPane.showMessageDialog(null, tipo);
     }//GEN-LAST:event_btnEntrarActionPerformed
     
     
