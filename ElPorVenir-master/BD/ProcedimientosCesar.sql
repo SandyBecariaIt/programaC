@@ -62,14 +62,14 @@ AS
 	select @idCompania=Compania.idCompania from Compania where descripcion=@compania
 	update Proveedor set telefono=@telefono,idCompania=@idCompania where descripcion=@marca
 
-CREATE PROCEDURE Loguea
+ALTER PROCEDURE Loguea
 	@usuario VARCHAR(100),
 	@contrasena VARCHAR(100),
 	@res INT OUTPUT
 AS
 	DECLARE @user VARCHAR(100);
-	SELECT @user = tipoUser FROM Usuarios WHERE @usuario = telefono OR @usuario = correo
-	AND actividad = 1;
+	SELECT @user = tipoUser FROM Usuarios WHERE @usuario = telefono OR @usuario = correo 
+	AND @contrasena = contrasena AND actividad = 1;
 	IF(@user > 0)
 		BEGIN
 			SET @res = @user;
